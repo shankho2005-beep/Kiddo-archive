@@ -48,31 +48,40 @@ cards.forEach(card => {
 const memoryImage =
 document.getElementById("memory-image");
 
-const memoryCaption =
-document.getElementById("memory-caption");
-
 
 if(memoryImage){
 
-    const memories = [
+const memories = [
 
-        {
-            image:"images/memory1.png",
-            caption:"still one of my favorite moments 😭"
-        },
+    {
+        image:"images/memory1.png"
+    },
 
-        {
-            image:"images/memory2.png",
-            caption:"tiny human energy detected"
-        },
+    {
+        image:"images/memory2.png"
+    },
 
-        {
-            image:"images/memory3.png",
-            caption:"you looked way too happy here"
-        }
+    {
+        image:"images/memory3.png"
+    },
 
-    ];
+    {
+        image:"images/memory4.png"
+    },
 
+    {
+        image:"images/memory5.png"
+    },
+
+    {
+        image:"images/memory6.png"
+    },
+
+    {
+        image:"images/memory7.png"
+    }
+
+];
 
 
     let currentMemory = 0;
@@ -102,9 +111,6 @@ if(memoryImage){
 
         memoryImage.src =
         memories[currentMemory].image;
-
-        memoryCaption.textContent =
-        memories[currentMemory].caption;
 
     });
 
