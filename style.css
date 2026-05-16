@@ -688,3 +688,18 @@ button{
     opacity: 1;
     transform: translateY(0);
 }
+.memory-photo{
+
+    transition:
+    opacity 0.6s ease;
+
+}
+
+
+
+.memory-caption{
+
+    transition:
+    opacity 0.6s ease;
+
+}
