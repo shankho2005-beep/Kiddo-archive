@@ -1,39 +1,3 @@
-const music = document.getElementById("bg-music");
-
-if (music) {
-
-    music.volume = 0;
-
-    function fadeIn(audio) {
-        let vol = 0;
-        audio.volume = 0;
-
-        const fade = setInterval(() => {
-            if (vol < 0.6) {
-                vol += 0.02;
-                audio.volume = vol;
-            } else {
-                clearInterval(fade);
-            }
-        }, 50);
-    }
-
-    function startMusic() {
-        music.play()
-            .then(() => {
-                fadeIn(music);
-            })
-            .catch(err => {
-                console.log("Autoplay blocked, waiting for interaction");
-            });
-    }
-
-    // 🔥 IMPORTANT: start on ANY user interaction
-    document.addEventListener("click", function initMusic() {
-        startMusic();
-        document.removeEventListener("click", initMusic);
-    });
-}
 
 const lines = document.querySelectorAll(".line");
 
@@ -238,7 +202,7 @@ And I’m already yours. Completely.`;
 
             let delay = 40;
 
-            const c = text.charAt(i);
+            const c = text.charAt(i-1);
 
             if (c === ",") delay = 150;
             if (c === ".") delay = 300;
@@ -285,19 +249,6 @@ function createStar() {
     setTimeout(() => star.remove(), 2000);
 }
 
-// slow ambient frequency
-setInterval(createStar, 800);
-function createStar() {
-    const star = document.createElement("div");
-    star.classList.add("star");
-
-    star.style.top = Math.random() * window.innerHeight + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-
-    document.querySelector(".stars")?.appendChild(star);
-
-    setTimeout(() => star.remove(), 2000);
-}
 
 // slow ambient frequency
 setInterval(createStar, 800);
