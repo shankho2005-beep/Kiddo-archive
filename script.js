@@ -39,16 +39,6 @@ cards.forEach(card => {
 
 });
 
-
-
-
-
-// MEMORY SLIDESHOW
-
-const memoryImage =
-document.getElementById("memory-image");
-
-
 // MEMORY SLIDESHOW
 
 const memoryImage =
@@ -57,8 +47,11 @@ document.getElementById("memory-image");
 const memoryCaption =
 document.getElementById("memory-caption");
 
+const memoryPage =
+document.getElementById("memory-page");
 
-if(memoryImage){
+
+if(memoryImage && memoryCaption && memoryPage){
 
     const memories = [
 
@@ -103,60 +96,70 @@ if(memoryImage){
 
     let currentMemory = 0;
 
-
-
-    const memoryPage =
-    document.getElementById("memory-page");
+    let transitioning = false;
 
 
 
-    if(memoryPage){
+    memoryPage.addEventListener("click", () => {
 
-        memoryPage.addEventListener("click", () => {
+        // prevent spam clicking
 
-            currentMemory++;
+        if(transitioning) return;
 
-
-
-            if(currentMemory >= memories.length){
-
-                goToPage("heart.html");
-
-                return;
-            }
+        transitioning = true;
 
 
 
-            // fade out
-
-            memoryImage.style.opacity = 0;
-
-            memoryCaption.style.opacity = 0;
+        currentMemory++;
 
 
 
-            setTimeout(() => {
+        // GO TO NEXT SECTION
 
-                memoryImage.src =
-                memories[currentMemory].image;
+        if(currentMemory >= memories.length){
 
-                memoryCaption.textContent =
-                memories[currentMemory].caption;
+            goToPage("heart.html");
+
+            return;
+        }
 
 
 
-                memoryImage.style.opacity = 1;
+        // FADE OUT
 
-                memoryCaption.style.opacity = 1;
+        memoryImage.style.opacity = 0;
 
-            },400);
+        memoryCaption.style.opacity = 0;
 
-        });
 
-    }
 
-}
-document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+
+            // CHANGE CONTENT
+
+            memoryImage.src =
+            memories[currentMemory].image;
+
+            memoryCaption.textContent =
+            memories[currentMemory].caption;
+
+
+
+            // FADE IN
+
+            memoryImage.style.opacity = 1;
+
+            memoryCaption.style.opacity = 1;
+
+
+
+            transitioning = false;
+
+        },500);
+
+    });
+
+}document.addEventListener("DOMContentLoaded", () => {
 
     const startScreen = document.getElementById("start-screen");
     const letterContainer = document.getElementById("letter-container");
