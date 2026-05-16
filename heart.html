@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Fragments</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
 <body>
 
     <div class="bg"></div>
@@ -7,34 +22,40 @@
     <div id="transition"
     class="transition-overlay"></div>
 
-    <div id="start-screen"
-    class="start-screen">
 
-       Click anywhere to open the letter
+
+    <div class="memory-container"
+    id="memory-page">
+
+        <div class="memory-box">
+
+            <img
+            id="memory-image"
+            src="images/memory1.png"
+            class="memory-photo">
+
+
+
+            <p id="memory-caption"
+            class="memory-caption">
+
+                still one of my favorite moments 😭
+
+            </p>
+
+        </div>
+
+
+
+        <p class="memory-hint">
+            click anywhere
+        </p>
 
     </div>
-
-    <div id="letter-container"
-    class="letter-container"
-    style="display:none;">
-
-        <div id="letter"
-        class="letter-text"></div>
-
-    </div>
-
-
-
-    <audio id="bg-music" loop>
-
-        <source
-        src="audio/bgm2.mp3"
-        type="audio/mp3">
-
-    </audio>
 
 
 
     <script src="script.js"></script>
 
 </body>
+</html>
