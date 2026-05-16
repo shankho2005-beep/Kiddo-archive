@@ -49,39 +49,56 @@ const memoryImage =
 document.getElementById("memory-image");
 
 
+// MEMORY SLIDESHOW
+
+const memoryImage =
+document.getElementById("memory-image");
+
+const memoryCaption =
+document.getElementById("memory-caption");
+
+
 if(memoryImage){
 
-const memories = [
+    const memories = [
 
-    {
-        image:"images/memory1.png"
-    },
+        {
+            image:"images/memory1.png",
+            caption:"still one of my favorite moments 😭"
+        },
 
-    {
-        image:"images/memory2.png"
-    },
+        {
+            image:"images/memory2.png",
+            caption:"Love is a fever dream"
+        },
 
-    {
-        image:"images/memory3.png"
-    },
+        {
+            image:"images/memory3.png",
+            caption:"Why is it me!?"
+        },
 
-    {
-        image:"images/memory4.png"
-    },
+        {
+            image:"images/memory4.png",
+            caption:"this was illegally adorable"
+        },
 
-    {
-        image:"images/memory5.png"
-    },
+        {
+            image:"images/memory5.png",
+            caption:"i still smile at this one"
+        },
 
-    {
-        image:"images/memory6.png"
-    },
+        {
+            image:"images/memory6.png",
+            caption:"dont wanna lose my favorite kiddo 😭"
+        },
 
-    {
-        image:"images/memory7.png"
-    }
+        {
+            image:"images/memory7.png",
+            caption:"and somehow i fell even harder"
+        }
 
-];
+    ];
+
 
 
     let currentMemory = 0;
@@ -89,30 +106,54 @@ const memories = [
 
 
     const memoryPage =
-
     document.getElementById("memory-page");
 
 
-    memoryPage.addEventListener("click", () => {
 
+    if(memoryPage){
 
-        currentMemory++;
+        memoryPage.addEventListener("click", () => {
 
-
-
-        if(currentMemory >= memories.length){
-
-            goToPage("heart.html");
-
-            return;
-        }
+            currentMemory++;
 
 
 
-        memoryImage.src =
-        memories[currentMemory].image;
+            if(currentMemory >= memories.length){
 
-    });
+                goToPage("heart.html");
+
+                return;
+            }
+
+
+
+            // fade out
+
+            memoryImage.style.opacity = 0;
+
+            memoryCaption.style.opacity = 0;
+
+
+
+            setTimeout(() => {
+
+                memoryImage.src =
+                memories[currentMemory].image;
+
+                memoryCaption.textContent =
+                memories[currentMemory].caption;
+
+
+
+                memoryImage.style.opacity = 1;
+
+                memoryCaption.style.opacity = 1;
+
+            },400);
+
+        });
+
+    }
 
 }
 document.addEventListener("DOMContentLoaded", () => {
